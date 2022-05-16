@@ -1,4 +1,4 @@
-module.exports.command = 'transfer [from wallet] [to wallet] [amount]'
+module.exports.command = 'transfer [fromWallet] [toWallet] [amount]'
 module.exports.describe = 'Transfer money'
 module.exports.builder = (yargs) => yargs
   .positional('fromWallet', {
@@ -20,7 +20,7 @@ module.exports.builder = (yargs) => yargs
   })
   .option('toCategory', {
     describe: 'Destination category',
-    alias: 'dc',
+    alias: 'tc',
     type: 'string'
   })
   .option('note', {
