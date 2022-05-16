@@ -40,6 +40,7 @@ module.exports.builder = (yargs) => yargs
   })
 
 module.exports.handler = async (argv) => {
+  console.log('Start logging money transfer')
   const chrono = require('chrono-node')
   const { getMoneyLover, printTransaction, promptOne } = require('../util')
   const MoneyLover = require('../moneylover')
