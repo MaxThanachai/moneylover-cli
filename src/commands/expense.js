@@ -32,7 +32,7 @@ module.exports.builder = (yargs) => yargs
 
 module.exports.handler = async (argv) => {
   const chrono = require('chrono-node')
-  const { getMoneyLover, printTransaction, promptOne } = require('../util')
+  const { getMoneyLover, promptOne } = require('../util')
   const MoneyLover = require('../moneylover')
 
   const ml = await getMoneyLover()
@@ -71,20 +71,11 @@ module.exports.handler = async (argv) => {
   }
 
   if (argv.date == null) {
-    // argv.date = await promptOne({
-    //   message: 'Date',
-    //   type: 'input',
-    //   default: 'today'
-    // })
     argv.date = 'today'
   }
   const date = chrono.parseDate(argv.date)
 
   if (argv.note == null) {
-    // argv.note = await promptOne({
-    //   message: 'Note',
-    //   type: 'input'
-    // })
     argv.note = 'logged by API'
   }
 
@@ -101,13 +92,6 @@ module.exports.handler = async (argv) => {
     })
     console.log('✔ Expense added')
     console.log(response)
-    // printTransaction({
-    //   wallet,
-    //   category,
-    //   amount: argv.amount,
-    //   note: argv.note || '',
-    //   date
-    // })
   } catch (e) {
     console.error('Could not add expense', e)
     process.exit(1)
