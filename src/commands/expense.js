@@ -26,7 +26,7 @@ module.exports.builder = (yargs) => yargs
   })
   .option('exclude', {
     describe: 'Exclude from report',
-    alias: 'exclude_report',
+    alias: 'e',
     type: 'boolean'
   })
 
