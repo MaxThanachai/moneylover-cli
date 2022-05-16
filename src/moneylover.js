@@ -106,6 +106,35 @@ class MoneyLoverClient {
       'Content-Type': 'application/json'
     })
   }
+
+  addMultipleTransaction ({ fromWallet, toWallet, amount, fromCategory, toCategory, date, note }) {
+    return this._postRequest('/transaction/add-multi', JSON.stringify({
+      transactions: [
+        {
+          account: fromWallet,
+          amount,
+          category: fromCategory,
+          displayDate: formatDate(date),
+          exclude_report: true,
+          note,
+          related: true,
+          with: [], // TODO
+        },
+        {
+          account: toWallet,
+          amount,
+          category: toCategory,
+          displayDate: formatDate(date),
+          exclude_report: true,
+          note,
+          related: true,
+          with: [], // TODO
+        }
+      ]
+    }), {
+    'Content-Type': 'application/json'
+  })
+  }
 }
 
 MoneyLoverClient.CATEGORY_TYPE_INCOME = 1
