@@ -92,7 +92,7 @@ module.exports.handler = async (argv) => {
 
 
   try {
-    await ml.addTransaction({
+    const response = await ml.addTransaction({
       account: wallet._id,
       category: category._id,
       amount: `${argv.amount}`,
@@ -101,13 +101,14 @@ module.exports.handler = async (argv) => {
       exclude_report: isExcludeFromReport
     })
     console.log('✔ Income added')
-    printTransaction({
-      wallet,
-      category,
-      amount: argv.amount,
-      note: argv.note || '',
-      date
-    })
+    console.log(response.body)
+    // printTransaction({
+    //   wallet,
+    //   category,
+    //   amount: argv.amount,
+    //   note: argv.note || '',
+    //   date
+    // })
   } catch (e) {
     console.error('Could not add income', e)
     process.exit(1)
