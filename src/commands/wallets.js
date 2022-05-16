@@ -4,6 +4,7 @@ module.exports.builder = (yargs) => yargs
 
 module.exports.handler = async (argv) => {
   console.log('This is a modified version')
+  console.log('And also updated')
   const chalk = require('chalk')
   const Table = require('cli-table3')
   const Decimal = require('decimal.js')
