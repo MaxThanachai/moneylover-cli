@@ -93,14 +93,15 @@ class MoneyLoverClient {
     })
   }
 
-  addTransaction ({ account, category, amount, note, date }) {
+  addTransaction ({ account, category, amount, note, date, exclude_report }) {
     return this._postRequest('/transaction/add', JSON.stringify({
         with: [], // TODO
         account,
         category,
         amount,
         note,
-        displayDate: formatDate(date)
+        displayDate: formatDate(date),
+        exclude_report
       }), {
       'Content-Type': 'application/json'
     })

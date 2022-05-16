@@ -24,6 +24,11 @@ module.exports.builder = (yargs) => yargs
     alias: 'd',
     type: 'string'
   })
+  .option('exclude', {
+    describe: 'Exclude from report',
+    alias: 'exclude_report',
+    type: 'boolean'
+  })
 
 module.exports.handler = async (argv) => {
   const chrono = require('chrono-node')
@@ -81,13 +86,16 @@ module.exports.handler = async (argv) => {
     })
   }
 
+  const isExcludeFromReport = argv.exclude == null ? false : argv.exclude
+
   try {
     await ml.addTransaction({
       account: wallet._id,
       category: category._id,
       amount: `${argv.amount}`,
       note: argv.note || '',
-      date
+      date,
+      exclude_report: isExcludeFromReport
     })
     console.log('✔ Expense added')
     printTransaction({
