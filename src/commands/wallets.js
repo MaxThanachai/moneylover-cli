@@ -3,6 +3,7 @@ module.exports.describe = 'List your wallets'
 module.exports.builder = (yargs) => yargs
 
 module.exports.handler = async (argv) => {
+  console.log('This is a modified version')
   const chalk = require('chalk')
   const Table = require('cli-table3')
   const Decimal = require('decimal.js')
