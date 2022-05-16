@@ -71,19 +71,21 @@ module.exports.handler = async (argv) => {
   }
 
   if (argv.date == null) {
-    argv.date = await promptOne({
-      message: 'Date',
-      type: 'input',
-      default: 'today'
-    })
+    // argv.date = await promptOne({
+    //   message: 'Date',
+    //   type: 'input',
+    //   default: 'today'
+    // })
+    argv.date = 'today'
   }
   const date = chrono.parseDate(argv.date)
 
   if (argv.note == null) {
-    argv.note = await promptOne({
-      message: 'Note',
-      type: 'input'
-    })
+    // argv.note = await promptOne({
+    //   message: 'Note',
+    //   type: 'input'
+    // })
+    argv.note = 'logged by API'
   }
 
   const isExcludeFromReport = argv.exclude == null ? false : argv.exclude
